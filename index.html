@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Page</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        text-align: center;
+        font-family: Arial, sans-serif;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: #baa3a3;
+        overflow: hidden;
+    }
+
+    main {        
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    #scoreboard {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .team {
+        flex: 1;
+    }
+
+    #roulette {
+        display: flex;
+    }
+    
+    .roulette-container {
+        transform: rotate(180deg);
+    }
+
+    .roulette-container::before{
+        content: "";
+        width: 60px;
+        height: 60px;
+        background-color: white;
+        position: absolute;
+        z-index: 99999;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        pointer-events: none;
+    }
+
+    .roulette{
+        border-radius: 360px;
+        position: relative;
+        overflow: hidden;
+        
+        animation-timing-function: cubic-bezier(0, 0.4, 0.4, 1.04);
+        animation-duration: 5.8s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+    }
+
+    .roulette::before{
+        content: "";
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        position: absolute;
+        z-index: 9999;
+        border-radius: 360px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+
+    .option{
+        border: 0 solid transparent;
+        position: absolute;
+        transform-origin: top center;
+        top: 50%;
+    }
+
+    .option::before{
+        z-index: 99999;
+        position: absolute;
+        display: block;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+        font-weight: bold;
+        font-family: 'Font Awesome 5 Free';
+        width: 40px;
+        line-height: 40px;
+        left: -20px;
+        margin-top: 125px;
+        transform: rotate(180deg);
+    }
+
+    .option i {
+        font-size: 24px; /* Adjust icon size as needed */
+    }
+
+
+
+</style>
+</head>
+<body>
+    <h1>Game</h1>
+    <main>
+
+        <div id="scoreboard">
+            <div class="team" id="team1">Team 1: 0</div>
+            <div class="team" id="team2">Team 2: 0</div>
+        </div>
+        
+        <div id="roulette">
+            <div class="roulette-container"> 
+                <div class="roulette"></div> 
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const rouletteSize = 360;
+        const numberOfSlots = 8;
+        const slotAngle = 360 / numberOfSlots;
+        const degrees = (180 - slotAngle) / 2;
+        const slotHeight = Math.tan(degrees * Math.PI / 180) * (rouletteSize / 2);
+        
+        const roulette = document.querySelector(".roulette");
+        roulette.style.width = rouletteSize + 'px';
+        roulette.style.height = rouletteSize + 'px';
+        
+        const styleTag = document.createElement('style');
+        styleTag.id = 'afterNumber';
+        document.head.appendChild(styleTag);
+
+        const iconUnicode = [
+            '\uf259',
+            '\uf128',
+            '\uf0b0',
+            '\uf5c3'
+        ];
+        
+        for(let i = 1; i <= numberOfSlots; i++) {
+            const option = document.createElement('div');
+            option.className = 'option option-' + i;
+            roulette.appendChild(option);
+            
+            const classSelector = '.option-' + i;
+            option.style.transform = 'rotate(' + slotAngle * i + 'deg)';
+            option.style.borderBottomColor = getRandomColor();
+            
+            const styleContent = '.option-'+ i +'::before {content: "' + iconUnicode[i % 4] + '";}';
+            styleTag.innerHTML += styleContent;
+            
+            option.dataset.content = i;
+            option.dataset.width = (rouletteSize / 2) + 'px';
+            option.dataset.line = (rouletteSize / 2) + 'px';
+        }
+
+        const options = document.querySelectorAll(".option");
+        options.forEach(function(option) {
+            option.style.borderBottomWidth = slotHeight + 'px';
+            option.style.borderRightWidth = (rouletteSize / 2) + 'px';
+            option.style.borderLeftWidth = (rouletteSize / 2) + 'px';
+        });
+        
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        roulette.addEventListener('click', function() {
+            let num;
+            let numID = 'number-';
+            num = 1 + Math.round(Math.random() * (numberOfSlots - 1));
+            numID += num;
+            
+            const animationRoulette = document.getElementById('animationRoulette');
+            if (animationRoulette) animationRoulette.remove();
+
+            const styleAnimation = document.createElement('style');
+            styleAnimation.id = 'animationRoulette';
+            styleAnimation.innerHTML = 
+            '#number-'+ num +' { animation-name: number-'+ num +'; } '+
+            '@keyframes number-'+ num +' {'+
+                'from { transform: rotate(0); } '+
+                'to { transform: rotate('+ (360 * (numberOfSlots - 1) - slotAngle * num) +'deg); }'+
+            '}';
+            document.head.appendChild(styleAnimation);
+            
+            roulette.removeAttribute('id');
+            roulette.id = numID;
+        });
+});
+
+    </script>
+
+
+</body>
+</html>
