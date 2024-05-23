@@ -53,11 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
         return color;
     }
 
+    const challenges = [
+        'quizz',
+        'diffusion',
+        'classification',
+        'pose'
+    ]
+    
+    let stoppedValue = null;
+
     roulette.addEventListener('click', function () {
         let num;
         let numID = 'number-';
         num = 1 + Math.round(Math.random() * (numberOfSlots - 1));
         numID += num;
+
+        stoppedValue = num;
 
         const animationRoulette = document.getElementById('animationRoulette');
         if (animationRoulette) animationRoulette.remove();
@@ -74,6 +85,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         roulette.removeAttribute('id');
         roulette.id = numID;
+
+        console.log('Roulette stopped at slot:', stoppedValue, challenges[(stoppedValue - 1)  % 4]);
+        fetch('http://localhost:8000/imagenet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ slot: stoppedValue })
+        })
     });
 });
 
