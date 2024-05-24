@@ -2,52 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Page 2</title>
-    <style>
-        .explanation {
-            display: none;
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const params = new URLSearchParams(window.location.search);
-            const encodedData = params.get('data');
-            if (encodedData) {
-                const myObject = JSON.parse(atob(decodeURIComponent(encodedData)));
-                displayOptions(myObject);
-            }
-        });
-        
-        function displayOptions(obj) {
-            const featDiv = document.getElementById('feat_map');
-            
-            // Create and append the image element
-            const image = document.createElement('img');
-            
-            // this part ensures the image is always reloded to get the image update
-            const timestamp = new Date().getTime();
-            image.src = `img/feat_maps/block_{ix}_map.png?${timestamp}`; 
-            
-            featDiv.appendChild(image);
-            
-
-            const container = document.getElementById('options');
-
-            // Populate the options div with options and explanations
-            for (const [option, explanation] of Object.entries(obj)) {
-                const optionDiv = document.createElement('div');
-                optionDiv.innerHTML = `<p>Option: ${option}</p><p class="explanation">${explanation}</p>`;
-                container.appendChild(optionDiv);
-            }
-}
-        
-        function showAllExplanations() {
-            const explanations = document.querySelectorAll('.explanation');
-            explanations.forEach(explanation => {
-                explanation.style.display = 'block';
-            });
-        }
-    </script>
+    <title>Classification | Verlab</title>
+    <link rel="shortcut icon" type="image/png" href="./img/verlabLogo.png" />
+    <link rel="stylesheet" href="./style/classification.css" />
 </head>
 <body>
     <h1>Question</h1>
@@ -56,5 +13,6 @@
     <div id="feat_map"></div>
     <div id="options"></div>
     <button onclick="showAllExplanations()">Show All Explanations</button>
+    <script src="./src/classification.js"></script>
 </body>
 </html>
