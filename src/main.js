@@ -91,10 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 window.location.href = 'diffusion.html';
             }, 10000);
-        // } else if(challenges[(stoppedValue - 1)  % 4] === 'pose') {
-        //     setTimeout(() => {
+			
+			// } else if(challenges[(stoppedValue - 1)  % 4] === 'pose') {
+				//     setTimeout(() => {
         //         window.location.href = 'pose.html';
         //     }, 10000);
+        
         } else if(challenges[(stoppedValue - 1)  % 4] === 'classification') {
             console.log('mandando...')
             let classes;
@@ -120,6 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
+        } else {
+			setTimeout(() => {
+				window.location.href = 'quiz.html';
+			}, 10000);
         }
     });
 });
