@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<style>
+html {
+  border-top: 5px solid #fff;
+  background: #58DDAF;
+  color: #2a2a2a;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+}
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+}
+
+#slider ul li {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+  position: relative;
+  justify-content: center;
+  /* display: block; */
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 700px;
+  height: 500px;
+  background: #ccc;
+  text-align: center;
+  line-height: 300px;
+}
+
+li img {
+	max-width:100%;
+}
+
+a.control_prev, a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a.control_prev:hover, a.control_next:hover {
+  opacity: 0.6;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev {
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+}
+
+a.control_next {
+opacity: 0;
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+
+
+</style>
+</head>
+<body>
+
+    <div id="slider">
+      <a href="#" class="control_next">></a>
+      <a href="#" class="control_prev"><</a>
+      <ul>
+		  <li><img id="randomImage5" src="" alt="Slide 5"></li>
+		  <li><img id="randomImage4" src="" alt="Slide 4"></li>
+		  <li><img id="randomImage3" src="" alt="Slide 3"></li>
+		  <li><img id="randomImage2" src="" alt="Slide 2"></li>
+		  <li><img id="randomImage1" src="" alt="Slide 1"></li>
+      </ul>  
+    </div>
+    
+
+<script>
+	const fileNames = [
+		"aviao",
+		"dollynho",
+		"dora",
+		"fusca",
+		"gato",
+		"jascha",
+		"lixo",
+		"maca",
+		"silvio"
+	];
+
+	const folder = fileNames[Math.floor(Math.random() * fileNames.length)];
+
+	for (let i = 1; i <= 5; i++) {
+		const src = '/img/diffusion/' + folder + '/' + folder + i +'.jpg'
+		document.getElementById("randomImage" + i).src = src;
+
+	}
+	
+	// Set the random file name as the src attribute of the img tag
+
+	document.addEventListener("DOMContentLoaded", function() {
+
+		var slideCount = document.querySelectorAll('#slider ul li').length;
+		var slideWidth = document.querySelector('#slider ul li').offsetWidth;
+		var slideHeight = document.querySelector('#slider ul li').offsetHeight;
+		var sliderUlWidth = slideCount * slideWidth;
+
+		document.querySelector('#slider').style.width = slideWidth + "px";
+		document.querySelector('#slider').style.height = slideHeight + "px";
+
+		document.querySelector('#slider ul').style.width = sliderUlWidth + "px";
+		document.querySelector('#slider ul').style.marginLeft = -slideWidth + "px";
+
+		document.querySelector('#slider ul li:last-child').parentNode.insertBefore(
+			document.querySelector('#slider ul li:last-child'),
+			document.querySelector('#slider ul li:first-child')
+		);
+
+		function moveLeft() {
+			var sliderUl = document.querySelector('#slider ul');
+			var firstSlide = document.querySelector('#slider ul li:first-child');
+			var lastSlide = document.querySelector('#slider ul li:last-child');
+
+			sliderUl.style.left = -slideWidth + "px";
+			sliderUl.insertBefore(lastSlide, firstSlide);
+			sliderUl.style.left = "";
+		}
+
+		function moveRight() {
+			var sliderUl = document.querySelector('#slider ul');
+			var firstSlide = document.querySelector('#slider ul li:first-child');
+			var lastSlide = document.querySelector('#slider ul li:last-child');
+
+			sliderUl.style.left = slideWidth + "px";
+			sliderUl.appendChild(firstSlide);
+			sliderUl.style.left = "";
+		}
+
+		document.querySelector('a.control_prev').addEventListener("click", function() {
+			moveLeft();
+		});
+
+		document.querySelector('a.control_next').addEventListener("click", function() {
+			moveRight();
+		});
+	});
+
+</script>
+
+</body>
+</html>

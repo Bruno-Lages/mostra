@@ -87,13 +87,40 @@ document.addEventListener("DOMContentLoaded", function () {
         roulette.id = numID;
 
         console.log('Roulette stopped at slot:', stoppedValue, challenges[(stoppedValue - 1)  % 4]);
-        fetch('http://localhost:8000/imagenet', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ slot: stoppedValue })
-        })
+        if (challenges[(stoppedValue - 1)  % 4] === 'diffusion') {
+            setTimeout(() => {
+                window.location.href = 'diffusion.html';
+            }, 10000);
+        // } else if(challenges[(stoppedValue - 1)  % 4] === 'pose') {
+        //     setTimeout(() => {
+        //         window.location.href = 'pose.html';
+        //     }, 10000);
+        } else if(challenges[(stoppedValue - 1)  % 4] === 'classification') {
+            console.log('mandando...')
+            let classes;
+            fetch('http://localhost:8000/imagenet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ slot: stoppedValue })
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);  // Print the returned data
+                classes = data;
+                const encodedObject = btoa(JSON.stringify(classes));
+                const queryString = `?data=${encodeURIComponent(encodedObject)}`;
+                window.location.href = 'classification.html' + queryString;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        }
     });
 });
 

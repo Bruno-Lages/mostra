@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from keras.applications.vgg16 import VGG16, preprocess_input, decode_predictions
 from keras.preprocessing.image import load_img, img_to_array
@@ -6,6 +6,7 @@ from keras.models import Model
 from matplotlib import pyplot as plt
 from numpy import expand_dims
 import os
+import random
 import ast
 
 app = FastAPI()
@@ -34,8 +35,15 @@ outputs = [model.layers[i].output for i in ixs]
 model_layers = Model(inputs=model.inputs, outputs=outputs)
 
 @app.post("/imagenet/")
-async def predict(file_name: str = 'star.jpg'):
-    image_path = os.path.join(os.path.dirname(__file__), 'img', 'imagenet', file_name)
+async def predict():
+    
+    # List all files in the ImageNet folder
+    image_files = os.listdir(os.path.join(os.path.dirname(__file__), 'img', 'imagenet'))
+    
+    # Choose a random image file
+    random_image_file = random.choice(image_files)
+
+    image_path = os.path.join(os.path.dirname(__file__), 'img', 'imagenet', random_image_file)
 
     # Load the image with the required shape
     img = load_img(image_path, target_size=(224, 224))

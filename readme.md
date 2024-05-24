@@ -13,9 +13,12 @@ python3 imagenet.py
 ```
 
 Tarefas restantes
-- [ ] Criar slider de imagens para os desafios de diffusion(imagens com ruído) e desafio de pose de mãos.
-- [ ] Criar modo de exibir múltiplas escolhas para os desafios de imagenet e quiz.
-- [ ] Criar modo de exibir imagens do desafio de imagenet(classificação de imagens) junto com o quiz.
-- [ ] Criar pastas do quiz e das poses de mãos.
+- [x] Criar slider de imagens para os desafios de diffusion(imagens com ruído) e desafio de pose de mãos.
+- [ ] Criar página do quiz.
+- [x] Criar modo de exibir imagens do desafio de imagenet(classificação de imagens) junto com o quiz.
+- [x] Criar pastas do quiz e das poses de mãos.
 - [ ] Criar sistema de inserção de pontos para equipes.
+- [ ] Criar estilo para as páginas
+- [ ] Pegar imagens de pose de mãos e ground truth
+- [ ] Criar perguntas para o quiz
 - [ ] Juntar tudo em um container
