@@ -109,3 +109,9 @@ button:hover {
     padding: 15px;
   }
 }
+
+div#feat_map {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

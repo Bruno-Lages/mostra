@@ -20,14 +20,19 @@ function displayOptions(obj) {
     featDiv.appendChild(image);
 
 
-    const container = document.getElementById('options');
+    const container = document.getElementById('questions-container');
+
+    const questionDiv = document.createElement('div');
+    questionDiv.classList.add('question-block');
 
     // Populate the options div with options and explanations
     for (const [option, explanation] of Object.entries(obj)) {
         const optionDiv = document.createElement('div');
-        optionDiv.innerHTML = `<p>Option: ${option}</p><p class="explanation">${explanation}</p>`;
-        container.appendChild(optionDiv);
+        optionDiv.innerHTML = `<p>${option}</p><p class="explanation">${explanation}</p>`;
+        questionDiv.appendChild(optionDiv);
     }
+
+    container.appendChild(questionDiv)
 }
 
 function showAllExplanations() {
