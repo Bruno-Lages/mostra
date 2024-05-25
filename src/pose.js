@@ -1,19 +1,22 @@
 const fileNames = [
-    "aviao",
-    "dollynho",
-    "dora",
-    "fusca",
-    "gato",
-    "jascha",
-    "lixo",
-    "maca",
-    "silvio",
+    "197",
+    "382",
+    "394",
+    "496",
+    "523",
+    "679",
+    "727",
+    "888",
+    "994",
+    "1358",
+    "1869",
+    "2115"
 ];
 
 const folder = fileNames[Math.floor(Math.random() * fileNames.length)];
 
 for (let i = 1; i <= 2; i++) {
-    const src = "/img/diffusion/" + folder + "/" + folder + i + ".jpg";
+    const src = "/img/pose/" + folder + "/" + i + ".png";
     document.getElementById("randomImage" + i).src = src;
 }
 

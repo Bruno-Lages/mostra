@@ -1,0 +1,103 @@
+{
+    "questions": [
+        {
+            "question": "Como os sistemas de robótica de enxame normalmente se comunicam?",
+            "options": [
+                "Usando código Morse",
+                "Por meio de notas manuscritas",
+                "Por comunicação direta sem fio e interações locais",
+                "Por telepatia"
+            ],
+            "correctOption": 2,
+            "explanation": "Os sistemas de robótica de enxame se comunicam por meio de comunicação direta sem fio e interações locais."
+        },
+        {
+            "question": "Qual técnica é comumente usada por robôs para mapear um ambiente e rastrear sua localização ao mesmo tempo?",
+            "options": [
+                "Deixando um rastro de migalhas de pão",
+                "Ecolocalização",
+                "SLAM (Mapeamento e Localização Simultâneos)",
+                "GPS"
+            ],
+            "correctOption": 2,
+            "explanation": "SLAM (Mapeamento e Localização Simultâneos) é uma técnica usada por robôs para mapear um ambiente e rastrear sua localização ao mesmo tempo."
+        },
+        {
+            "question": "Qual é uma vantagem chave das técnicas de super-resolução na visão computacional?",
+            "options": [
+                "Criar pôsteres",
+                "Aumentar os detalhes e a qualidade de imagens de baixa resolução",
+                "Deixar as imagens bonitas nas redes sociais",
+                "Melhorar selfies de robôs"
+            ],
+            "correctOption": 1,
+            "explanation": "As técnicas de super-resolução aumentam os detalhes e a qualidade de imagens de baixa resolução."
+        },
+        {
+            "question": "Quais tecnologias são usadas principalmente por veículos autônomos para detectar e interpretar seu entorno?",
+            "options": [
+                "Sonar e ecolocalização",
+                "LiDAR, radar e câmeras",
+                "Sensores infravermelhos e ultravioletas",
+                "GPS tradicional e entrada manual"
+            ],
+            "correctOption": 1,
+            "explanation": "LiDAR, radar e câmeras são usadas principalmente por veículos autônomos para detectar e interpretar seu entorno."
+        },
+        {
+            "question": "Qual fenômeno natural inspirou os algoritmos usados para controlar enxames de robôs?",
+            "options": [
+                "Comportamento de colônias de formigas",
+                "Comportamento de busca de alimento das abelhas",
+                "Voos de pássaros",
+                "Cardumes de peixes"
+            ],
+            "correctOption": 0,
+            "explanation": "Os algoritmos usados para controlar enxames de robôs são inspirados pelo comportamento de colônias de formigas."
+        },
+        {
+            "question": "Como os GANs criam imagens realistas?",
+            "options": [
+                "Usando uma única rede e um grande conjunto de dados",
+                "Usando duas redes que competem entre si para melhorar",
+                "Seguindo padrões pré-definidos",
+                "Aplicando filtros em imagens existentes"
+            ],
+            "correctOption": 1,
+            "explanation": "Os GANs criam imagens realistas usando duas redes que competem entre si para melhorar."
+        },
+        {
+            "question": "Qual é um uso comum de nuvens de pontos na modelagem 3D?",
+            "options": [
+                "Representar formas e ambientes 3D para realidade virtual",
+                "Simplificar a impressão 3D",
+                "Melhorar a qualidade das imagens 2D",
+                "Reduzir o tamanho dos arquivos de imagem"
+            ],
+            "correctOption": 0,
+            "explanation": "As nuvens de pontos são comumente usadas para representar formas e ambientes 3D para realidade virtual."
+        },
+        {
+            "question": "Qual é o objetivo da segmentação semântica na análise de imagens?",
+            "options": [
+                "Encontrar as bordas em uma imagem",
+                "Transformar uma imagem em preto e branco",
+                "Rotular cada pixel em uma imagem para identificar diferentes objetos",
+                "Redimensionar imagens sem perder qualidade"
+            ],
+            "correctOption": 2,
+            "explanation": "O objetivo da segmentação semântica na análise de imagens é rotular cada pixel em uma imagem para identificar diferentes objetos."
+        },
+        {
+            "question": "O que torna os modelos de difusão diferentes de outros modelos de geração de imagens?",
+            "options": [
+                "Eles usam apenas dados rotulados",
+                "Eles melhoram as imagens passo a passo, removendo o ruído",
+                "Eles não precisam de treinamento",
+                "Eles criam imagens em um único passo"
+            ],
+            "correctOption": 1,
+            "explanation": "Os modelos de difusão melhoram as imagens passo a passo, removendo o ruído."
+        }
+    ]
+}
