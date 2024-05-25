@@ -19,7 +19,7 @@ function displayRandomQuestion(questions) {
 
     questionObj.options.forEach((option, index) => {
         const optionDiv = document.createElement('div');
-        optionDiv.innerHTML = `<p>Option: ${option}</p>`;
+        optionDiv.innerHTML = `<p>${option}</p>`;
         
         if (index === questionObj.correctOption) {
             optionDiv.innerHTML += `<p class="explanation">${questionObj.explanation}</p>`;

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Quiz</title>
     <link rel="stylesheet" href="./style/quiz.css" />
+    <link rel="shortcut icon" type="image/png" href="./img/verlabLogo.png" />
     <script src="./src/quiz.js"></script>
-</head>
-<body>
+  </head>
+  <header>
+    <div id="perfil">
+      <a href="./index.html" title="Voltar a página inicial"
+        ><img src="./Img/verlabLogo.png"
+      /></a>
+    </div>
+    <a href="./index.html" id="but" title="sair"
+      >Sair</a>
+  </header>
+  <body>
     <h1>Random Question</h1>
     <div id="questions-container"></div>
     <button onclick="showAllExplanations()">Show Answer</button>
-</body>
+  </body>
 </html>

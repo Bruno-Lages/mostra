@@ -1,29 +1,110 @@
 * {
-  margin: 0;
-  padding: 0;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-body {
-  text-align: center;
-  font-family: "Calibri", sans-serif;
-  width: 100vw;
-  height: 100vh;
-  background-color: #baa3a3;
-  overflow: hidden;
-}
+  body {
+    font-family: "Calibri", sans-serif;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  header #perfil img {
+    height: 50px;
+  }
+  
+  header a#but {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ff4d4d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  header a#but:hover {
+    background-color: #ff1a1a;
+  }
 
-body h1 {
-  font-size: 2em;
-  padding: 20px;
-}
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Scoreboard styling */
+  #scoreboard {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
+  .team {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team p {
+    font-size: 1.5em;
+    color: #333;
+  }
 
-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
-}
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+    }
+  
+    header a#but {
+      margin-top: 10px;
+    }
+  
+    main {
+      padding: 10px;
+    }
+  
+    #scoreboard {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .team {
+      margin: 10px 0;
+    }
+  
+    .roulette-container {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
 
 #scoreboard {
   display: flex;

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Classification | Verlab</title>
     <link rel="shortcut icon" type="image/png" href="./img/verlabLogo.png" />
-    <link rel="stylesheet" href="./style/classification.css" />
-</head>
-<body>
+
+    <link rel="stylesheet" href="./style/quiz.css" />
+  </head>
+  <header>
+    <div id="perfil">
+      <a href="./index.html" title="Voltar a página inicial"
+        ><img src="./Img/verlabLogo.png"
+      /></a>
+    </div>
+    <a href="./index.html" id="but" title="sair">Sair</a>
+  </header>
+  <body>
     <h1>Question</h1>
     <p>Options</p>
     <!-- <img src="img/feat_maps/block_{ix}_map.png" /> -->
@@ -14,5 +23,5 @@
     <div id="options"></div>
     <button onclick="showAllExplanations()">Show All Explanations</button>
     <script src="./src/classification.js"></script>
-</body>
+  </body>
 </html>
