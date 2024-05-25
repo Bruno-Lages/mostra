@@ -92,10 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = 'diffusion.html';
             }, 10000);
 			
-			// } else if(challenges[(stoppedValue - 1)  % 4] === 'pose') {
-				//     setTimeout(() => {
-        //         window.location.href = 'pose.html';
-        //     }, 10000);
+		} else if(challenges[(stoppedValue - 1)  % 4] === 'pose') {
+			    setTimeout(() => {
+            window.location.href = 'pose.html';
+        }, 10000);
         
         } else if(challenges[(stoppedValue - 1)  % 4] === 'classification') {
             console.log('mandando...')
@@ -117,7 +117,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 classes = data;
                 const encodedObject = btoa(JSON.stringify(classes));
                 const queryString = `?data=${encodeURIComponent(encodedObject)}`;
-                window.location.href = 'classification.html' + queryString;
+                setTimeout(() => {
+                    window.location.href = 'classification.html' + queryString;
+                }, 8000);
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
